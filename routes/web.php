@@ -13,8 +13,9 @@ use App\Http\Controllers\bookController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/booklist', [App\Http\Controllers\bookController::class, 'show'])->name('show');
+Route::get('/addbook', [App\Http\Controllers\bookController::class, 'index'])->name('index');
 
-Route::get('/addbook', [App\Http\Controllers\bookController::class, 'index'])->name('addbook');
 Route::get('/create', [App\Http\Controllers\bookController::class, 'create'])->name('create');
 Route::post('store/', [App\Http\Controllers\bookController::class, 'store'])->name('store');
 
@@ -28,6 +29,4 @@ Route::delete('/{book}', [App\Http\Controllers\bookController::class, 'destroy']
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/booklist', function () {
-    return view('Booklist');
-});
+
