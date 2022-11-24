@@ -23,6 +23,11 @@ Route::post('edit/{book}', [App\Http\Controllers\bookController::class, 'update'
 
 Route::delete('/{book}', [App\Http\Controllers\bookController::class, 'destroy'])->name('destroy');
 
+
+
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/booklist', function () {
+    return view('Booklist');
 });
