@@ -44,39 +44,39 @@
 
 <div class="container">
     <div class="row">
-        <table class="table table-bordered">
-            <tr>
-                <th>No</th>
-                <th>isbn</th>
-                <th>title</th>
-                <th>edition</th>
-                <th>author</th>
-                <th></th>
-
-            </tr>
-            @foreach ($books as $book)
+            <table class="table table-bordered">
                 <tr>
-
-                    <td>{{ ++$i }}</td>
-
-                    <td>{{ $book->isbn }}</td>
-                    <td>{{ $book->title }}</td>
-                    <td>{{ $book->edition }}</td>
-                    <td>{{ $book->author }}</td>
-                    <td>
-                        <form action="{{ route('destroy', $book->id) }}" method="POST">
-
-                            @csrf
-                            @method('Delete')
-
-                            <button type="submit" class="btn btn-danger">Delete Book</button>
-
-                        </form>
-                    </td>
+                    <th>No</th>
+                    <th>isbn</th>
+                    <th>title</th>
+                    <th>edition</th>
+                    <th>author</th>
+                    <th></th>
 
                 </tr>
-            @endforeach
-        </table>
+                @foreach ($books as $book)
+                    <tr>
+
+                        <td>{{ ++$i }}</td>
+
+                        <td>{{ $book->isbn }}</td>
+                        <td>{{ $book->title }}</td>
+                        <td>{{ $book->edition }}</td>
+                        <td>{{ $book->author }}</td>
+                        <td>
+                            <form action="{{ route('destroy', $book->id) }}" method="POST">
+
+                                @csrf
+                                @method('Delete')
+
+                                <button type="submit" class="btn btn-danger">Delete Book</button>
+
+                            </form>
+                        </td>
+
+                        </tr>
+                @endforeach
+            </table>
     </div>
 </div>
 

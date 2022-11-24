@@ -28,11 +28,7 @@
         @csrf
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Isbn:</strong>
-                    <input type="text" name="isbn" class="form-control" placeholder="isbn">
-                </div>
+            
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">

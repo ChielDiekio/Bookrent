@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\book;
+use App\Helpers\Helper; 
 
 class bookController extends Controller
 {
@@ -37,16 +38,18 @@ class bookController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'isbn' => 'required',
-            'title' => 'required',
-            'author' => 'required',
-            'edition' => 'required',
-        ]);
+    
+        $isbn = Helper::IDGenerator(new book, 'isbn', 5, 'isbn');
+        $title = $request->title;
+        $author = $request->author;
+        $edition = $request->edition;
 
-        $input = $request->all();
-
-        book::create($input);
+        $q = new book;
+        $q->isbn = $isbn;
+        $q->title = $title;
+        $q->author = $author;
+        $q->edition = $edition;
+        $q->save();
 
         return redirect('/addbook')
             ->with('success','Book added');
