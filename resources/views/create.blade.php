@@ -28,24 +28,24 @@
         @csrf
 
         <div class="row">
-            
+
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Title:</strong>
-                    <input type="text" name="title" class="form-control" placeholder="title">
+                    <input type="text" name="title" class="form-control" placeholder="title" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Author:</strong>
-                    <input type="text" name="author" class="form-control" placeholder="author">
+                    <input type="text" name="author" class="form-control" placeholder="author" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Edition:</strong>
-                    <input type="text" name="edition" class="form-control" placeholder="edition">
+                    <input type="text" name="edition" class="form-control" placeholder="edition" required>
                 </div>
             </div>
 

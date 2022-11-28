@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\bookController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,20 +14,28 @@ use App\Http\Controllers\bookController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/booklist', [App\Http\Controllers\bookController::class, 'show'])->name('show');
-Route::get('/addbook', [App\Http\Controllers\bookController::class, 'index'])->name('index');
-
-Route::get('/create', [App\Http\Controllers\bookController::class, 'create'])->name('create');
-Route::post('store/', [App\Http\Controllers\bookController::class, 'store'])->name('store');
-
-Route::post('edit/{book}', [App\Http\Controllers\bookController::class, 'edit'])->name('edit');
-Route::post('edit/{book}', [App\Http\Controllers\bookController::class, 'update'])->name('update');
-
-Route::delete('/{book}', [App\Http\Controllers\bookController::class, 'destroy'])->name('destroy');
-
-
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+Auth::routes();
+//user
+Route::middleware(['auth','user-role:user'])->group(function()
+{
+    Route::get("/home",[HomeController::class,'userHome'])->name('home');
+});
+
+//admin
+Route::middleware(['auth','user-role:admin'])->group(function()
+{
+    Route::get("/admin/home",[HomeController::class,'userHome'])->name('home.admin');
+
+    Route::get('/addbook', [App\Http\Controllers\bookController::class, 'index'])->name('index');
+    Route::get('/create', [App\Http\Controllers\bookController::class, 'create'])->name('create');
+    Route::post('store/', [App\Http\Controllers\bookController::class, 'store'])->name('store');
+    Route::delete('/{book}', [App\Http\Controllers\bookController::class, 'destroy'])->name('destroy');
+});
