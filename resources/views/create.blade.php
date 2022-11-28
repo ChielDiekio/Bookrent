@@ -30,7 +30,7 @@
         <div class="row">
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 pt-5">
                 <div class="form-group">
                     <strong>Title:</strong>
                     <input type="text" name="title" class="form-control" placeholder="title" required>
@@ -49,10 +49,10 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center pt-5">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <button onclick="history.back()" class="btn btn-danger">back</button>
             </div>
-        </div>
 
     </form>
 </div>

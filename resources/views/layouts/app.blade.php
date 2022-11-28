@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+
+    @stack('css')
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -36,6 +39,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/addbook">Add a book</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/booklist">Book list</a>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
