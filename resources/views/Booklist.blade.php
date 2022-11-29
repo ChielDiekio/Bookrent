@@ -15,18 +15,19 @@
 
 <div class="container">
     <div class="btn-group" role="group" aria-label="Basic example">
+
         <div>
-            <a class="btn btn-info" style="margin: 20px" href="/home">< back</a>
+            <a class="btn btn-info m-2" href="/home">< back</a>
         </div>
         <div>
             <form method="GET" action="{{ route('search') }}">
-                <div class="py-2 flex">
-                    <div class="overflow-hidden flex pl-4">
+                <div>
+                    <div class="overflow-hidden d-flex justify-content-center m-2">
                         <input type="search" name="search" value="{{ request()->input('search') }}"
                                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-100"
                                placeholder="Search">
                         <button type='submit'
-                                class='ml-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150'>
+                                class='ml-4 inline-flex items-center px-4 py-2'>
                             {{ __('Search') }}
                         </button>
                     </div>
@@ -65,11 +66,10 @@
     </div>
 </div>
 
-
-<div class="d-flex justify-content-center">
+<div class="container d-flex justify-content-center">
     {{ $books->appends(request()->query())->links() }}
-
 </div>
+
 
 </body>
 </html>
