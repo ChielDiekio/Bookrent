@@ -26,6 +26,8 @@ Auth::routes();
 Route::middleware(['auth'])->group(function()
 {
     Route::get('/booklist', [App\Http\Controllers\bookController::class, 'show'])->name('show');
+    Route::get('/booklist', [App\Http\Controllers\bookController::class, 'search'])->name('search');
+
 
 });
 

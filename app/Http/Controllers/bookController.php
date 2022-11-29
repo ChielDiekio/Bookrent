@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\book;
-use App\Helpers\Helper; 
+use App\Helpers\Helper;
 
 class bookController extends Controller
 {
@@ -15,9 +15,30 @@ class bookController extends Controller
      */
     public function index()
     {
+
         $books = book::latest()->paginate(5);
 
-        return view('Addbook', compact('books'))->with('i',(request()->input('page',1) - 1) * 5);
+        return view('Addbook', compact('books'))
+            ->with('i',(request()->input('page',1) - 1) * 5);
+
+
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $books = book::latest();
+        if (request()->has('search')) {
+            $books ->where('title', 'Like', '%' . request()->input('search') . '%');
+        }
+        $books = $books->paginate(5);
+        return view('booklist',compact('books'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -38,7 +59,7 @@ class bookController extends Controller
      */
     public function store(Request $request)
     {
-    
+
         $isbn = Helper::IDGenerator(new book, 'isbn', 5, 'isbn');
         $title = $request->title;
         $author = $request->author;
