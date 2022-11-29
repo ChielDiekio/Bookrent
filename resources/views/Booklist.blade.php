@@ -16,7 +16,7 @@
 <div class="container">
     <div class="btn-group" role="group" aria-label="Basic example">
         <div>
-            <a class="btn btn-info" style="margin: 20px" onclick="history.back()">< back</a>
+            <a class="btn btn-info" style="margin: 20px" href="/home">< back</a>
         </div>
         <div>
             <form method="GET" action="{{ route('search') }}">

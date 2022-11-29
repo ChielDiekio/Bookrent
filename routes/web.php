@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function()
     Route::get('/booklist', [App\Http\Controllers\bookController::class, 'show'])->name('show');
     Route::get('/booklist', [App\Http\Controllers\bookController::class, 'search'])->name('search');
 
+    Route::get("/home",[HomeController::class,'userHome'])->name('home');
 
 });
 
@@ -35,8 +36,7 @@ Route::middleware(['auth'])->group(function()
 //user
 Route::middleware(['auth','user-role:user'])->group(function()
 {
-    Route::get("/home",[HomeController::class,'userHome'])->name('home');
-
+    //
 });
 
 //admin

@@ -36,7 +36,7 @@
             <a class="btn btn-success" style="margin: 20px" href="{{ url('create') }}">Add Book</a>
         </div>
         <div>
-            <a class="btn btn-info" style="margin: 20px" onclick="history.back()">< back</a>
+            <a class="btn btn-info" style="margin: 20px" href="/home">< back</a>
         </div>
     </div>
 </div>
