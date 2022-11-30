@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('LendBook/', [App\Http\Controllers\LendController::class, 'LendBook'])->name('LendBook');
 
 Auth::routes();
 

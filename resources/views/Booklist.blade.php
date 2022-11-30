@@ -59,6 +59,17 @@
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->edition }}</td>
                     <td>{{ $book->author }}</td>
+                    <td>
+
+
+                        <form action="{{ route('LendBook') }}" method="POST">
+                        @csrf
+                            <input type="hidden" name="book_id" value={{ $book->id }}>
+                            <button type="submit" class="btn btn-primary"> Lend Book </button>
+
+                        </form>
+
+                    </td>
 
                 </tr>
             @endforeach
