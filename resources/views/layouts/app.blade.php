@@ -40,6 +40,9 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
+                            <a class="nav-link" href="/history">History</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/addbook">Add a book</a>
                         </li>
                         <li class="nav-item">
