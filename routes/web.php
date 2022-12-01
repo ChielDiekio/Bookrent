@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::post('LendBook/', [App\Http\Controllers\LendController::class, 'LendBook'])->name('LendBook');
 Route::get('/history', [App\Http\Controllers\LendController::class, 'LendHistory'])->name('LendHistory');
+Route::get('/overview', [App\Http\Controllers\overview::class, 'getOverview'])->name('overview');
 
 Auth::routes();
 

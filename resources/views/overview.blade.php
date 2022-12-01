@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,15 +26,17 @@
     <h1>History</h1>
         <table class="table table-bordered">
                     <tr>
-                        <th></th>
+                        <th>Name</th>
                         <th>Title:</th>
                         <th>Lend on:</th>
                     </tr>
-                    @foreach ($history as $item)
+                    @foreach ($overview as $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->name }}</td>
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->lend_on }}</td>
+
+
                         </tr>
                     @endforeach
         </table>

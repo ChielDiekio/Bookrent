@@ -14,5 +14,5 @@ class lend extends Model
     public $table='lends';
 
     protected $fillable = ['user_id', 'book_id'];
-
+    
 }

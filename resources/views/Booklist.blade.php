@@ -14,6 +14,24 @@
 <body>
 
 <div class="container">
+    @if ($message = Session::get('success'))
+        <div id="divId" class="alert alert-success">
+            <button type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-hidden="true">&times;
+            </button>
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+</div>
+<script>
+    $("button").click(function () {
+        $("div.alert").slideUp(800).delay(2000);
+    });
+</script>
+
+<div class="container">
     <div class="btn-group" role="group" aria-label="Basic example">
 
         <div>
@@ -77,6 +95,8 @@
     </div>
 </div>
 
+
+<!-- //pagination -->
 <div class="container d-flex justify-content-center">
     {{ $books->appends(request()->query())->links() }}
 </div>
