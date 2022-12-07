@@ -21,8 +21,10 @@ class LendController extends Controller
 
     public function LendBook(Request $request)
     {
-        //get current user
+        //get current logged in user 
         $user = Auth::user();
+
+        //get current user_id fom logged in user
         $user_id = $user->id;
 
         //get specific book
@@ -48,7 +50,10 @@ public function LendHistory()
 
                 //get lended books from specific user
                 $history = DB::table('lends')
+
+                // get books from book table via book_id in lend table
                 ->join('books','lends.book_id','=','books.id')
+
                 ->where('lends.user_id',$user_id)
                 ->get();
 

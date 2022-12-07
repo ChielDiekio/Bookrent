@@ -15,9 +15,10 @@ class bookController extends Controller
      */
     public function index()
     {
-
+        // get latest books from database with max 5 items per page.
         $books = book::latest()->paginate(5);
 
+        // sends data to view with max 5 books.
         return view('Addbook', compact('books'))
             ->with('i',(request()->input('page',1) - 1) * 5);
 
@@ -32,10 +33,19 @@ class bookController extends Controller
      */
     public function search(Request $request)
     {
+        // get latest books from data base
         $books = book::latest();
+
+        // if request got search value
         if (request()->has('search')) {
+
+            // then...
+
+            // searches title from book by entered term in input
             $books ->where('title', 'Like', '%' . request()->input('search') . '%');
         }
+        
+        // sends data to view with max 5 books.
         $books = $books->paginate(5);
         return view('booklist',compact('books'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -60,11 +70,14 @@ class bookController extends Controller
     public function store(Request $request)
     {
 
+        // create unique Isbn
         $isbn = Helper::IDGenerator(new book, 'isbn', 5, 'isbn');
+
         $title = $request->title;
         $author = $request->author;
         $edition = $request->edition;
 
+        //saves information as new book
         $q = new book;
         $q->isbn = $isbn;
         $q->title = $title;
@@ -72,6 +85,7 @@ class bookController extends Controller
         $q->edition = $edition;
         $q->save();
 
+        // returns to booklist with succes message.
         return redirect('/addbook')
             ->with('success','Book added');
     }
@@ -84,8 +98,10 @@ class bookController extends Controller
      */
     public function show()
     {
+        // get latest books from database with max 5 items per page.
         $books = book::latest()->paginate(5);
 
+        // sends data to view with max 5 books.        
         return view('Booklist', compact('books'))->with('i',(request()->input('page',1) - 1) * 5);
     }
 
@@ -120,6 +136,7 @@ class bookController extends Controller
      */
     public function destroy(book $book)
     {
+            //deletes specific book
             $book->delete();
 
         return redirect('/addbook')

@@ -13,18 +13,20 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
-<body>
+<body class="bg-blue-600">
 
 <div class="container">
 
     <div>
         <a class="btn btn-info m-2" href="/home">< back</a>
     </div>
-
+    
     <div class="row">
     <h1>History</h1>
-        <table class="table table-bordered">
-                    <tr>
+
+        <!-- show specific users lendhistory -->
+        <table class="table table-bordered bg-pink-400 ">
+                    <tr class="bg-pink-600">
                         <th></th>
                         <th>Title:</th>
                         <th>Lend on:</th>

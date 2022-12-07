@@ -6,12 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    @vite('resources/css/app.css')
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
-<body>
+<body class="bg-blue-600">
 
+<!-- show error if there is one -->
 @if ($errors->any())
     <div class="alert alert-danger">
         Error
@@ -23,7 +26,10 @@
     </div>
 @endif
 
+
 <div class="container">
+
+    <!-- route for store funtion in bookController -->
     <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
@@ -50,7 +56,10 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center pt-5">
-                <button type="submit" class="btn btn-primary">Submit</button>
+
+                <!-- submit form with data and saves it to the database -->
+                <button type="submit" class="btn btn-success">Submit</button>
+
                 <button onclick="history.back()" class="btn btn-danger">back</button>
             </div>
 

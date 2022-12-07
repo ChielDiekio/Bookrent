@@ -6,13 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Addbook</title>
 
+    @vite('resources/css/app.css')
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-blue-600">
 
 <div class="container">
+
+    <!-- show messagge when controller function succeed -->
     @if ($message = Session::get('success'))
         <div id="divId" class="alert alert-success">
             <button type="button"
@@ -44,8 +49,10 @@
 
 <div class="container">
     <div class="row">
-            <table class="table table-bordered">
-                <tr>
+        
+            <!-- show books in table -->
+            <table class="table table-bordered bg-pink-400 ">
+                <tr class=" bg-pink-600">
                     <th>No</th>
                     <th>isbn</th>
                     <th>title</th>
@@ -64,6 +71,8 @@
                         <td>{{ $book->edition }}</td>
                         <td>{{ $book->author }}</td>
                         <td>
+
+                            <!-- form for delete specific book -->
                             <form action="{{ route('destroy', $book->id) }}" method="POST">
 
                                 @csrf
@@ -80,6 +89,7 @@
     </div>
 </div>
 
+<!-- pagination -->
 <div class="d-flex justify-content-center">
     {!! $books->links() !!}
 </div>

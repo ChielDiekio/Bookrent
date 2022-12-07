@@ -17,6 +17,7 @@ class UserRoleMiddleware
      */
     public function handle(Request $request, Closure $next, $role)
     {
+        //check current login user role
         if(Auth::check() && auth::user()->role == $role){
             return $next($request);
         }

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
+
+        <eta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+         @vite('resources/css/app.css')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/home.css') }}">
-
-        @push('css')
-            <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-        @endpush
 
         <title>home</title>
 
@@ -27,31 +24,25 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center min-h-screen bg-blue-600  sm:items-center py-4 sm:pt-0">
+
             @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-                <div class="container">
+                <div class="container grid justify-items-center">
                     <div>
-                        <button class="log">Login</button>
-                        <button class="reg">Sign up</button>
-                    </div>
-                </div>
+                    @auth
+                    <a href="{{ url('/home') }}" class="w-full py-3 text-xl text-center text-white transition-colors duration-300 bg-pink-500 rounded-full hover:bg-green-500 ease px-9 md:w-auto">Home</a> 
+                    @else
+                    <a href="{{ route('login') }}" class="w-full py-3 text-xl text-center text-white transition-colors duration-300 bg-pink-500 rounded-full hover:bg-green-500 ease px-9 md:w-auto">Login</a> 
 
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="w-full py-3 text-xl text-center text-white transition-colors duration-300 bg-pink-500 rounded-full hover:bg-green-500 ease px-9 md:w-auto">Register</a>        
+                    @endif
+                    @endauth                
                     </div>
+                    @endif
+
+
+                </div>
                 </div>
             </div>
         </div>

@@ -14,9 +14,18 @@
                         </div>
                     @endif
 
-                    {{ Auth::user()->name }}
+                    <!-- shows username -->
+                    Logged in as: {{ Auth::user()->name }}
                         <br>
-                    {{ $msg }}
+
+                    <!-- if user logged in as admin.. -->
+                    @if (Auth::user() && Auth::user()->role == 'admin')
+                        <p>Hello admin</P>
+
+                    <!-- else show.. -->
+                    @else
+                        <p>Hello user</p>
+                    @endif
 
                 </div>
             </div>

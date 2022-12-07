@@ -1,4 +1,9 @@
 <!doctype html>
+<?php
+use Illuminate\Support\Facades\Auth;
+
+?>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 
@@ -17,37 +22,51 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/app.css'])
+
+    
 </head>
-<body>
+<body class="bg-blue-600">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-pink-400 shadow-sm">
             <div class="container">
+                
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
                         <!-- Authentication Links -->
+                     <?php 
+                             $user = Auth::user();
+                     ?>
+                     
+<li class="nav-item dropdown">
+
+                            
+                        <!-- if user is admin then show this.. -->
+                        @if (Auth::user() && Auth::user()->role == 'admin')
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Tools
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="nav-link" href="/addbook">Add a book</a>
+                                <a class="nav-link" href="/overview">Overview</a>
+                                </div>
+                        @endif
+                                
+                        <!-- if user is logged in show this.. -->
+                        @if (Auth::user())
                         <li class="nav-item">
-                            <a class="nav-link" href="/history">History</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/addbook">Add a book</a>
+                            <a class="nav-link " href="/history">History</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/booklist">Book list</a>
                         </li>
+                        @endif
+
+                        <!-- if not login show login/register else show logout -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">

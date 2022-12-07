@@ -20,9 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('LendBook/', [App\Http\Controllers\LendController::class, 'LendBook'])->name('LendBook');
-Route::get('/history', [App\Http\Controllers\LendController::class, 'LendHistory'])->name('LendHistory');
-Route::get('/overview', [App\Http\Controllers\overview::class, 'getOverview'])->name('overview');
 
 Auth::routes();
 
@@ -30,7 +27,8 @@ Route::middleware(['auth'])->group(function()
 {
     Route::get('/booklist', [App\Http\Controllers\bookController::class, 'show'])->name('show');
     Route::get('/booklist', [App\Http\Controllers\bookController::class, 'search'])->name('search');
-
+    Route::post('LendBook/', [App\Http\Controllers\LendController::class, 'LendBook'])->name('LendBook');
+    Route::get('/history', [App\Http\Controllers\LendController::class, 'LendHistory'])->name('LendHistory');
     Route::get("/home",[HomeController::class,'userHome'])->name('home');
 
 });
@@ -51,5 +49,6 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::get('/create', [App\Http\Controllers\bookController::class, 'create'])->name('create');
     Route::post('store/', [App\Http\Controllers\bookController::class, 'store'])->name('store');
     Route::delete('/{book}', [App\Http\Controllers\bookController::class, 'destroy'])->name('destroy');
+    Route::get('/overview', [App\Http\Controllers\overview::class, 'getOverview'])->name('overview');
 
 });
